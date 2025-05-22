@@ -18,7 +18,7 @@ const roomPublic = true;
 const geo = [{"code": "VE", "lat": 40, "lon": -3}];
 
 // Admin password //
-var adminPassword = 130422102703;
+var adminPassword = 552211;
 
 const room = HBInit({ roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0] });
 
