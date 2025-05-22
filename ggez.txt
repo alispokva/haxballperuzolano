@@ -6,19 +6,19 @@
 
 /* ROOM */
 
-const Bot = "ATH BOT: "; // Bot's name
+const Bot = "Alis Pokva: "; // Bot's name
 
 // GLOBAL VARIABLES //
 const roomName = "♻FUTSAL X3 | CON ARDILLA ♻";
 const botName ="mc ardilla";
-const maxPlayers = 16;
+const maxPlayers = 20;
 const roomPublic = true;
 
 // GEOLOCALIZATION //
 const geo = [{"code": "VE", "lat": 40, "lon": -3}];
 
 // Admin password //
-var adminPassword = 552211;
+var adminPassword = 554411;
 
 const room = HBInit({ roomName: roomName, maxPlayers: maxPlayers, public: roomPublic, playerName: botName, geo: geo[0] });
 
@@ -92,7 +92,7 @@ let allReds = []; // ... those who came in a very unequal game.
 let inChooseMode = false; // This variable enables to distinguish the 2 phases of playing and choosing which should be dealt with very differently
 let redCaptainChoice = "";
 let blueCaptainChoice = "";
-const chooseTime = 20;
+const chooseTime = 10;
 let timeOutCap;
 
 /* AUXILIARY */
@@ -309,7 +309,7 @@ function checkTime() {
 			return;
 		}
 		goldenGoal = true;
-		room.sendAnnouncement("Gol gana! El que pierde es de la UNI.", null, 0x4ffaff, "bold", 1);
+		room.sendAnnouncement("Gol gana! El que pierde es fan de vox.", null, 0x4ffaff, "bold", 1);
 	}
 	if (Math.abs(drawTimeLimit * 60 - scores.time - 60) <= 0.01 && players.length > 2) {
 		if (checkTimeVariable == false) {
@@ -400,7 +400,7 @@ function deactivateChooseMode() {
 	clearTimeout(timeOutCap);
 	if (slowMode != 0) {
 		slowMode = 0;
-		room.sendAnnouncement(Bot + "Go ñofi!!!.", null, 0x4ffaff, "bold", 1);
+		room.sendAnnouncement(Bot + "Dale pues.", null, 0x4ffaff, "bold", 1);
 	}
 	redCaptainChoice = "";
 	blueCaptainChoice = "";
@@ -973,8 +973,8 @@ room.onPlayerJoin = function(player) {
 	}
 	else
 	{
-		room.sendAnnouncement("[ATHBOT] 👋 Bienvenido UTECsino a [LPF(F)] " + player.name + " ! Escriba '!help' para ver los comandos.", "bold", 1);
-		room.sendAnnouncement(Bot + "Pon !dc para entrar al discord del server ", player.id, 0x6FE35D, "bold", 1);
+		room.sendAnnouncement("[Alis Pokva] 👋 Bienvenido a [FCA(F] " + player.name + " ! Escriba '!help' para ver los comandos.", "bold", 1);
+		room.sendAnnouncement(Bot + "¡Bienvenido, pon !dc para entrar al Discord del server! ", player.id, 0x6FE35D, "bold", 1);
 	
 
 	}
@@ -990,7 +990,7 @@ room.onPlayerTeamChange = function(changedPlayer, byPlayer) {
 	}
 	if (getAFK(changedPlayer) && changedPlayer.team != Team.SPECTATORS) {
 		room.setPlayerTeam(changedPlayer.id, Team.SPECTATORS);
-		room.sendAnnouncement(Bot + changedPlayer.name + " Se fue a jatear!", null, 0xA1CDFF, "bold", 1);
+		room.sendAnnouncement(Bot + changedPlayer.name + " Se fue a dormir!", null, 0xA1CDFF, "bold", 1);
 		return;
 	}
 	updateTeams();
@@ -1068,7 +1068,7 @@ room.onPlayerChat = function (player, message) {
 
 	if (message.startsWith("t "))
 	{
-	room.getPlayerList().filter(callback => callback.team == player.team).forEach(callback => {room.sendAnnouncement("[Chat de equipo] " + player.name + ": " + message.substr(2)/*`[Chat de equipo] > [${player.id}] ${player.name}: ${message.substr(prefixTeamChatString.length)}`*/, callback.id, player.team == 1 ? 0xFF1a1a : player.team == 0 ? 0xABFFB6 : 0x2C6AC7, "bold", 1)})
+	room.getPlayerList().filter(callback => callback.team == player.team).forEach(callback => {room.sendAnnouncement("[Chat de equipo] " + player.name + ": " + message.substr(2)/*`[Chat de equipo] > [${player.id}] ${player.name}: ${message.substr(prefixTeamChatString.length)}`*/, callback.id, player.team == 1 ? 0xFF2400 : player.team == 0 ? 0xABFFB6 : 0x00BFFF, "bold", 1)})
 
 	return false;
 	}
@@ -1084,7 +1084,7 @@ room.onPlayerChat = function (player, message) {
 
 	if (["!help"].includes(message[0].toLowerCase()))
 	{
-		room.sendAnnouncement(" Comandos : !me, t [chat para team], !camisetahelp, !dc, !elo, !t0p, !afk, !bb ", player.id, 0xdac292, "bold", 2);
+		room.sendAnnouncement(" Comandos : !me, t [chat para team], !ropas, !ropa,  !dc, !elo, !t0p, !afk, !bb ", player.id, 0xdac292, "bold", 2);
 		player.admin ? room.sendAnnouncement(Bot + " : [Admin] !mute <duration = 3> #<id>, !unmute all/#<id>, !clearbans <number = all>, !slow <duration>, !endslow", player.id, 0xdac292, "bold", 2) : null;
 				player.admin ? room.sendAnnouncement(Bot + " : [Admin] | !color <htmlcolor> | !message <message> | !emoji <emoji>", player.id, 0xdac292, "bold", 2) : null;
 	}
@@ -1112,7 +1112,7 @@ room.onPlayerChat = function (player, message) {
         // Create items array
   		top10Array.sort((a, b) => b.elo - a.elo);
 
-        room.sendAnnouncement("-------------LOS 10 MAS GRANDES DE HAXBALL-------------", player.id, 0x86af49, "bold", 2);
+        room.sendAnnouncement("-------------LOS 10 MAS GRANDES DE CHATBALL-------------", player.id, 0x86af49, "bold", 2);
 
 		if (message.length > 1) {limit = parseInt(message[1]);}
 
@@ -1125,7 +1125,7 @@ room.onPlayerChat = function (player, message) {
 	else if (message == "!dc" || message == "!dc"){
         // Example of rules lol
 		room.sendAnnouncement("1.Unete al discord del server (discord.gg/GMqDXevb)", player.id, 0xffcd48, "bold", 2);
-		room.sendAnnouncement("2.-En el discord puedes informarte de las mejoras del server, cuando abre y cuando cierra.", player.id, 0xffcd48, "bold", 2);
+		room.sendAnnouncement("2.-En el discord puedes informarte de las mejoras del server, apurate y unete.", player.id, 0xffcd48, "bold", 2);
 		room.sendAnnouncement("3.-Todo esto es modificado y mantenido por Alis Pokva <3 .", player.id, 0xffcd48, "bold", 2);
 	}
 	else if (["!afk"].includes(message[0].toLowerCase())) {
@@ -1143,8 +1143,8 @@ room.onPlayerChat = function (player, message) {
 		}
 		setAFK(player, !getAFK(player));
         // AFK message when command activated lol
-		room.sendAnnouncement(player.name + (getAFK(player) ? " se ha ido a cagar!" : " ha vuelto de limpiarse el culo !"), null, (getAFK(player) ? 0xFFE063 : 0xFFE063), "normal", 1);
-		/*room.sendAnnouncement(player.name + (getAFK(player) ? " Se ha ido a cagar!" : " Ha vuelto de limpiarse el culo !"), null, 0xFFE063, "bold", 2);*/
+		room.sendAnnouncement(player.name + (getAFK(player) ? " Se ha ido a cagar!" : " Ha vuelto de limpiarse el culo !"), null, (getAFK(player) ? 0xFFE063 : 0xFFE063), "normal", 1);
+		/*room.sendAnnouncement(player.name + (getAFK(player) ? " Se ha ido a cagar! " : " Ha vuelto de limpiarse el culo! ."), null, 0xFFE063, "bold", 2);*/
 		getAFK(player) ? updateRoleOnPlayerOut() : updateRoleOnPlayerIn();
 	}
 	else if (["!afks", "!afklist"].includes(message[0].toLowerCase())) {
@@ -1291,7 +1291,7 @@ room.onPlayerChat = function (player, message) {
 						stats[Ss.RL] = "admin";
 						localStorage.setItem(getAuth(room.getPlayer(Number.parseInt(message[1]))), JSON.stringify(stats));
 						room.setPlayerAdmin(room.getPlayer(Number.parseInt(message[1])).id, true);
-						room.sendAnnouncement(Bot + room.getPlayer(Number.parseInt(message[1])).name + " Ahora es alumno de la UTEC !", null, 0x8AFFF7, "bold", 2);
+						room.sendAnnouncement(Bot + room.getPlayer(Number.parseInt(message[1])).name + " Ahora es Administrador !", null, 0x8AFFF7, "bold", 2);
 					}
 				}
 			}
@@ -1305,7 +1305,7 @@ room.onPlayerChat = function (player, message) {
 					var stats;
 					localStorage.getItem(getAuth(room.getPlayer(Number.parseInt(message[1])))) ? stats = JSON.parse(localStorage.getItem(getAuth(room.getPlayer(Number.parseInt(message[1]))))) : stats = [0, 0, 0, 0, "0.00", 0, 0, 0, 0, "0.00", 0, "player", room.getPlayer(Number.parseInt(message[1])).name, "", 0x000000, ""];
 					if (stats[Ss.RL] == "admin") {
-						room.sendAnnouncement(Bot + room.getPlayer(Number.parseInt(message[1])).name + " Ya no es alumno de la UTEC !", null, 0x8AFFF7, "bold", 2);
+						room.sendAnnouncement(Bot + room.getPlayer(Number.parseInt(message[1])).name + " Ya no es Administrador !", null, 0x8AFFF7, "bold", 2);
 						stats[Ss.RL] = "player";
 						localStorage.setItem(getAuth(room.getPlayer(Number.parseInt(message[1]))), JSON.stringify(stats));
 						room.setPlayerAdmin(room.getPlayer(Number.parseInt(message[1])).id, false);
@@ -1466,7 +1466,7 @@ room.onPlayerChat = function (player, message) {
     // Must use hexadecimal colors for it, [0x'HEXCOLOR']
     // setTeamColors(team : TeamID, angle : float, textColor : int, colors : []int) : void
 
-	else if (["!camiseta"].includes(message[0].toLowerCase()) && player.team != 0)
+	else if (["!ropa"].includes(message[0].toLowerCase()) && player.team != 0)
 	{
 		var correct = true;
 		if (message[1].toLowerCase() == "aguilas")
@@ -1547,9 +1547,9 @@ room.onPlayerChat = function (player, message) {
 
 	}
 
-	else if (["!camisetahelp"].includes(message[0].toLowerCase()))
+	else if (["!ropas"].includes(message[0].toLowerCase()))
 	{
-		room.sendAnnouncement("[ATH] !camiseta [Nombre Del Equipo] : aguilas, abejitas, borrachos, mishari, expropiadores, liverpool, rechuchamboys, machos, psg, victoria, lorient, devils, callao, atheros [ In progress ]", player.id, 0x4ffaff, "bold", 2);
+		room.sendAnnouncement("[ATH] !ropa [Nombre Del Equipo] : aguilas, abejitas, borrachos, mishari, expropiadores, liverpool, rechuchamboys, machos, psg, victoria, lorient, devils, callao, atheros [ In progress ]", player.id, 0x4ffaff, "bold", 2);
 	}
 
 
@@ -1657,8 +1657,8 @@ room.onPlayerChat = function (player, message) {
 	}
 
 	else if (!player.admin) {
-			/*room.sendAnnouncement(player.name + ": " + message.join(" ") , null , player.team == 1 ? 0xFF7438 : player.team == 0 ? 0xffffff : 0x2C6AC7, "normal", 1);*/
-			room.sendAnnouncement((player.team == 1 ? "🔴 " + player.name + ": " + message.join(" ") : player.team == 0 ? player.name + ": " + message.join(" ") : "🔵 " + player.name + ": " + message.join(" ")), null , player.team == 1 ? 0xFF0000 : player.team == 0 ? 0xffffff : 0x2C6AC7, "normal", 1);
+			/*room.sendAnnouncement(player.name + ": " + message.join(" ") , null , player.team == 1 ? 0xFF7438 : player.team == 0 ? 0xFF2400 : 0x00BFFF, "normal", 1);*/
+			room.sendAnnouncement((player.team == 1 ? "♻│" + player.name + ": " + message.join(" ") : player.team == 0 ? "♻│"  + player.name + ": " + message.join(" ") : "♻│" + player.name + ": " + message.join(" ")), null , player.team == 1 ? 0xFF2400 : player.team == 0 ? 0xFFD700: 0x00BFFF, "normal", 1);
 			return false;
 
 	}
@@ -1856,7 +1856,7 @@ room.onTeamGoal = function(team) {
 
 	}
 	else {
-		room.sendAnnouncement("🤣 " + getTime(scores) + " " + lastPlayersTouched[0].name + " BEBÉ" + " ¿QUE FUÉ? 🙃 "+ " ! Velocidad de tiro : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? "🔴" : "🔵"), null, 0x4ffaff, "bold", 1);
+		room.sendAnnouncement("🤣 " + getTime(scores) + " " + lastPlayersTouched[0].name + " MANO" + " ¿QUE HACES XDD? 🙃 "+ " ! Velocidad de tiro : " + ballSpeed.toPrecision(4).toString() + "km/h " + (team == Team.RED ? "🔴" : "🔵"), null, 0x4ffaff, "bold", 1);
 		game.goals.push(new Goal(scores.time, team, null, null));
 	}
 	if (scores.scoreLimit != 0 && (scores.red == scores.scoreLimit || scores.blue == scores.scoreLimit && scores.blue > 0 || goldenGoal == true)) {
